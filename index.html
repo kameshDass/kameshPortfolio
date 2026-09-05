@@ -68,7 +68,8 @@
   .brand{font-family:'Sora';font-weight:700;font-size:18px;display:flex;align-items:center;gap:10px;}
   .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
   .navlinks{display:flex;gap:30px;font-size:14.5px;color:var(--muted);}
-  .navlinks a:hover{color:var(--text);}
+  .navlinks a{transition:color .25s ease, text-shadow .25s ease;}
+  .navlinks a:hover, .navlinks a:active{color:var(--accent);text-shadow:0 0 18px rgba(76,141,255,0.45);}
   .navlinks{display:none;}
   @media(min-width:840px){.navlinks{display:flex;}}
   .navcta{
@@ -87,7 +88,7 @@
   /* HERO */
   .hero{padding-top:80px;padding-bottom:90px;}
   .hero-grid{display:grid;grid-template-columns:1fr;gap:56px;align-items:center;}
-  @media(min-width:900px){.hero-grid{grid-template-columns:1.15fr 0.85fr;}}
+  @media(min-width:900px){.hero-grid{grid-template-columns:1.35fr 0.65fr;}}
   .avail{
     display:inline-flex;align-items:center;gap:8px;
     font-size:13px;color:var(--teal);
@@ -97,7 +98,8 @@
   .avail span.dot{width:7px;height:7px;background:var(--teal);border-radius:50%;}
   .hero h1{font-size:clamp(38px,5.4vw,58px);font-weight:800;line-height:1.06;}
   .hero h1 em{font-style:normal;color:var(--accent);}
-  .hero .role{font-size:clamp(18px,2.2vw,22px);color:var(--muted);margin-top:18px;font-weight:500;}
+  .hero .role{font-size:clamp(16px,1.7vw,19px);color:var(--muted);margin-top:18px;font-weight:500;}
+  @media(min-width:900px){.hero .role{white-space:nowrap;}}
   .hero .desc{margin-top:20px;color:var(--muted);max-width:520px;font-size:15.5px;}
   .hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
   .btn{
@@ -111,7 +113,7 @@
   .hero-stats .stat span{font-size:13px;color:var(--muted);}
 
   /* hero photo */
-  .portrait{position:relative;max-width:360px;margin:0 auto;}
+  .portrait{position:relative;max-width:320px;margin:0 auto;}
   .glow{
     position:absolute;border-radius:50%;filter:blur(50px);
     opacity:.55;z-index:0;
@@ -227,9 +229,29 @@
   .tag{
     font-size:13.5px;padding:8px 14px;border-radius:6px;
     border:1px solid var(--border);color:var(--text);background:var(--surface);
+    transition:transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease, color .2s ease;
+    cursor:default;
   }
-  .tag.accent{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
-  .tag.teal{border-color:var(--teal);color:var(--teal);background:var(--teal-soft);}
+  .tag:hover, .tag:active{
+    transform:translateY(-3px) scale(1.04);
+    border-color:var(--accent);
+    color:var(--accent);
+    background:var(--accent-soft);
+    box-shadow:0 10px 24px -12px rgba(76,141,255,0.55);
+  }
+
+  /* heading hover glow — consistent across every section */
+  section h2, section h3, section h4,
+  .fact .value, .stat b {
+    transition:color .25s ease, text-shadow .25s ease, transform .25s ease;
+  }
+  section h2:hover, section h3:hover, section h4:hover,
+  .fact .value:hover, .stat b:hover,
+  section h2:active, section h3:active, section h4:active,
+  .fact .value:active, .stat b:active {
+    color:var(--accent);
+    text-shadow:0 0 22px rgba(76,141,255,0.45);
+  }
 
   /* PROJECT case study */
   .case{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:44px;}
@@ -422,9 +444,9 @@
     <div class="skill-group">
       <h3>Operations &amp; delivery</h3>
       <div class="tags">
-        <span class="tag accent">Operations Management</span>
+        <span class="tag">Operations Management</span>
         <span class="tag">Vendor Management</span>
-        <span class="tag accent">SLA Management &amp; Compliance</span>
+        <span class="tag">SLA Management &amp; Compliance</span>
         <span class="tag">Ticket &amp; Case Management</span>
         <span class="tag">Escalation Management</span>
         <span class="tag">Queue Management &amp; Prioritisation</span>
@@ -441,9 +463,9 @@
     <div class="skill-group">
       <h3>AI &amp; workflow automation</h3>
       <div class="tags">
-        <span class="tag teal">Claude AI</span>
-        <span class="tag teal">Gumloop</span>
-        <span class="tag teal">GitHub</span>
+        <span class="tag">Claude AI</span>
+        <span class="tag">Gumloop</span>
+        <span class="tag">GitHub</span>
         <span class="tag">AI-Assisted Workflow Design</span>
         <span class="tag">Process Automation</span>
       </div>
